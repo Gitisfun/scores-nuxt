@@ -21,6 +21,17 @@ import MatchController from "~~/api/calls/match";
 import { getLastFiveGames } from "~~/logic/util.js";
 import { useScoresStore } from "~~/store/scores";
 
+useHead({
+  title: "KAVVV uitslagen",
+  meta: [
+    {
+      name: "description",
+      content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Wedstrijdverslag van jouw lokale team!",
+    },
+  ],
+  link: [{ rel: "canonical", href: "https://kavvv-uitslagen.be" }],
+});
+
 const store = useScoresStore();
 const isLoading = ref(false);
 const game = ref(null);

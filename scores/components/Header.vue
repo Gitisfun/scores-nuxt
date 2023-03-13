@@ -2,7 +2,7 @@
   <div class="header-container">
     <Icon v-if="isOnHomePage()" icon="bx:football" color="black" width="35" height="35" />
     <IconWithHover v-if="!isOnHomePage()" icon="bx:arrow-back" width="30" height="30" @iconClick="goBack" />
-    <span class="header-container-text"> {{ title }} </span>
+    <h1 class="header-container-text">{{ title }}</h1>
   </div>
 </template>
 
@@ -27,8 +27,8 @@ function goBack() {
 <style scoped>
 .header-container {
   font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 15px;
+  padding-top: 1px;
+  padding-bottom: 5px;
   padding-left: 25px;
   padding-right: 10px;
   display: flex;

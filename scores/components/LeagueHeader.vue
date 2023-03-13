@@ -1,8 +1,8 @@
 <template>
   <div class="league-container">
-    <span>
+    <h2 class="league-header">
       {{ title }}
-    </span>
+    </h2>
     <IconWithHover @iconClick="navToLeague" icon="bx:caret-right" color="white" width="20 " height="20" />
   </div>
 </template>
@@ -42,9 +42,14 @@ async function navToLeague() {
   font-size: 14px;
   border-radius: 7.5px;
   background-color: skyblue;
-  /* background-color: #dff9fb; */
   color: white;
-  /* border: 1px solid skyblue; */
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+.league-header {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 15px;
 }
 </style>

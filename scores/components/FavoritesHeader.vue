@@ -1,6 +1,6 @@
 <template>
   <div class="favorites-container">
-    <span> FAVORIETEN </span>
+    <h2 class="favorites-header">FAVORIETEN</h2>
     <IconWithHover @iconClick="navToLeague" icon="bx:star" color="white" width="20" height="20" />
   </div>
 </template>
@@ -34,5 +34,12 @@ async function navToLeague() {
   background-color: orange;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+}
+.favorites-header {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 15px;
 }
 </style>

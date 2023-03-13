@@ -25,6 +25,17 @@ import { useScoresStore } from "~~/store/scores";
 import { findClosestDateIndex } from "~~/logic/date";
 import { convertToDateList } from "~~/logic/date";
 
+useHead({
+  title: "KAVVV uitslagen",
+  meta: [
+    {
+      name: "description",
+      content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de competitie uitslagen van jouw lokale team!",
+    },
+  ],
+  link: [{ rel: "canonical", href: "https://kavvv-uitslagen.be" }],
+});
+
 const route = useRoute();
 const store = useScoresStore();
 
