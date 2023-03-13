@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const httpClient = axios.create({
-  baseURL: "http://localhost:5050/api/", // TODO: change to real api link
-  //baseURL: "https://scraper-scores.herokuapp.com/api/",
+  //baseURL: "http://localhost:5050/api/",
+  baseURL: "https://scraper-scores.herokuapp.com/api/",
   timeout: 10000, // indicates, 1000ms ie. 1 second
   headers: {
     "Content-Type": "application/json",
