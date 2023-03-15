@@ -32,6 +32,10 @@ useHead({
       name: "description",
       content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen jouw lokale club!",
     },
+    {
+      name: "google-site-verification",
+      content: "i-d5dcGOmI5iffIB3u5T1hYZjLtJjcaCTl2xrbYTFx8",
+    },
     { property: "og:title", content: "KAVVV Uitslagen" },
     { property: "og:description", content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen jouw lokale club!" },
     { property: "og:type", content: "website" },
