@@ -66,7 +66,6 @@ onMounted(() => {
     store.setFavorites(leagues);
     const list = convertToDateList(dateList);
     storeDatesInCache(list);
-
     store.setDates(list);
 
     const index = findClosestDateIndex(list);
