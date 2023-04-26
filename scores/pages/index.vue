@@ -1,9 +1,9 @@
 <template>
   <div>
     <Header title="KAVVV VB & OV Uitslagen" />
-    <!-- 
-      <Loader v-if="isLoading" />
-    -->
+
+    <Loader v-if="isLoading" />
+
     <DateContainer v-if="!isLoading" />
     <div v-if="store.schedule.length > 0 && !isLoading">
       <div>
