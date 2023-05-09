@@ -66,7 +66,7 @@ const index = findClosestDateIndex(tempDates);
 store.setScheduleIndex(index);
 rounds.value = temp;
 ranking.value = leagues?.value.ranking;
-teams.value = ranking.value.map((e) => e.team.replace("\n", "").trim());
+teams.value = ranking?.value?.map((e) => e.team.replace("\n", "").trim());
 
 store.setRanking(leagues?.value.ranking);
 store.setScheduleLeague(temp);

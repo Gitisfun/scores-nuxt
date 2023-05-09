@@ -27,7 +27,7 @@ const ROUTE_NAME = baseApiRoute(store.province);
 
 const { data: teams } = await useFetch(`${ROUTE_NAME}/clubs`, {
   transform: (data) => {
-    return data.map((e) => e.name).sort();
+    return data?.map((e) => e?.name)?.sort();
   },
 });
 </script>

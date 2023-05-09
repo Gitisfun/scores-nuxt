@@ -99,11 +99,11 @@ export const getLastFiveGames = (list, team) => {
     }
   }
 
-  const dateList = temp.map((e) => e.date);
+  const dateList = temp?.map((e) => e.date);
 
   const index = findClosestDateIndex(dateList);
 
-  if (temp.length > 5) return temp.slice(-5);
+  if (temp?.length > 5) return temp?.slice(-5);
 
-  return temp.slice(0, index + 1);
+  return temp?.slice(0, index + 1);
 };

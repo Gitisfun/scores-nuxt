@@ -3,7 +3,7 @@ import { nlBE } from "date-fns/locale/index.js";
 import { DUTCH_MONTHS, ENGLISH_MONTHS } from "./constants/date";
 
 export const convertToDateList = (list) => {
-  const temp = list.map((e) => new Date(e));
+  const temp = list?.map((e) => new Date(e));
   temp.sort((a, b) => a - b);
   return temp;
 };
