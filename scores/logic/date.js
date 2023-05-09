@@ -1,5 +1,5 @@
 import { format, closestIndexTo, differenceInMinutes } from "date-fns";
-import { nlBE } from "date-fns/locale";
+import { nlBE } from "date-fns/locale/index.js";
 import { DUTCH_MONTHS, ENGLISH_MONTHS } from "./constants/date";
 
 export const convertToDateList = (list) => {
