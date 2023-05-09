@@ -11,18 +11,6 @@
   </div>
 </template>
 
-<script>
-import Kit from "./Kit.vue";
-
-export default {
-  name: "KitContainer",
-  props: {
-    info: Object,
-  },
-  components: { Kit },
-};
-</script>
-
 <style>
 .kit-container {
   display: flex;

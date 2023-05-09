@@ -20,10 +20,10 @@
 </template>
 
 <script setup>
-import LeagueController from "~~/api/calls/league";
 import { useScoresStore } from "~~/store/scores";
 import { findClosestDateIndex } from "~~/logic/date";
 import { convertToDateList } from "~~/logic/date";
+import baseApiRoute from "~~/api/baseApiRoute";
 
 useHead({
   title: "KAVVV uitslagen",
@@ -41,11 +41,35 @@ const store = useScoresStore();
 
 const ranking = ref([]);
 const rounds = ref([]);
-const title = ref("");
+const title = ref(route.query.league);
 const isFullScheduleShown = ref(false);
 const teams = ref(null);
 
 const schedule = ref("");
+
+const ROUTE_NAME = baseApiRoute(store.province);
+
+const [{ data: dates }, { data: leagues }] = await Promise.all([
+  useFetch(`${ROUTE_NAME}/games/league`, {
+    query: { league: route.query.league },
+  }),
+  useFetch(`${ROUTE_NAME}/rankings`, {
+    query: { league: route.query.league },
+  }),
+]);
+
+const temp = dates.value;
+temp.sort((a, b) => new Date(a.date) - new Date(b.date));
+const tempDates = convertToDateList(temp.map((e) => e.date));
+store.setDates(tempDates);
+const index = findClosestDateIndex(tempDates);
+store.setScheduleIndex(index);
+rounds.value = temp;
+ranking.value = leagues?.value.ranking;
+teams.value = ranking.value.map((e) => e.team.replace("\n", "").trim());
+
+store.setRanking(leagues?.value.ranking);
+store.setScheduleLeague(temp);
 
 const selectedRound = computed(() => {
   if (rounds.value.length === 0) return null;
@@ -58,24 +82,6 @@ const leagueTeamsList = computed(() => {
   return [];
 });
 
-onMounted(() => {
-  title.value = route.query.league;
-
-  LeagueController.get({ league: route.query.league }, (res) => {
-    const temp = res[0].data;
-    temp.sort((a, b) => new Date(a.date) - new Date(b.date));
-    const tempDates = convertToDateList(temp.map((e) => e.date));
-    store.setDates(tempDates);
-    const index = findClosestDateIndex(tempDates);
-    store.setScheduleIndex(index);
-    rounds.value = temp;
-    ranking.value = res[1].data.ranking;
-    teams.value = ranking.value.map((e) => e.team.replace("\n", "").trim());
-
-    store.setRanking(res[1].data.ranking);
-    store.setScheduleLeague(temp);
-  });
-});
 function filterSchedule(selectedTeam) {
   schedule.value.refresh(selectedTeam);
 }

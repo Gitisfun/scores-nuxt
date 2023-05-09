@@ -13,6 +13,7 @@ export const useScoresStore = defineStore("scores", {
     favorites: [],
     lastFiveGames: [],
     scheduleLeague: [],
+    province: null,
   }),
   getters: {
     getScheduleIndex: (state) => state.scheduleIndex,
@@ -24,6 +25,7 @@ export const useScoresStore = defineStore("scores", {
     getFavorites: (state) => state.favorites,
     getLastFiveGames: (state) => state.lastFiveGames,
     getScheduleLeague: (state) => state.scheduleLeague,
+    getProvince: (state) => state.province,
   },
   actions: {
     setSchedule(list) {
@@ -52,6 +54,9 @@ export const useScoresStore = defineStore("scores", {
     },
     setScheduleLeague(list) {
       this.scheduleLeague = list;
+    },
+    setProvince(province) {
+      this.province = province;
     },
   },
 });

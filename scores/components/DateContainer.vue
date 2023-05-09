@@ -17,8 +17,8 @@
 import { Icon } from "@iconify/vue";
 import { useScoresStore } from "~~/store/scores";
 import { formatDay } from "~~/logic/date";
-import HomeController from "~~/api/calls/home";
 import { formatDateToString } from "~~/logic/date";
+import baseApiRoute from "~~/api/baseApiRoute";
 
 const route = useRoute();
 const store = useScoresStore();
@@ -48,28 +48,30 @@ const isOnLeagueRoute = computed(() => {
   return false;
 });
 
-function previousRound() {
+async function previousRound() {
   const index = store.scheduleIndex - 1;
 
   if (index >= 0) {
-    fetchRound(index);
+    await fetchRound(index);
   }
 }
-function nextRound() {
+async function nextRound() {
   const index = store.scheduleIndex + 1;
   const max = store.dates.length;
 
   if (index < max) {
-    fetchRound(index);
+    await fetchRound(index);
   }
 }
-function fetchRound(index) {
+async function fetchRound(index) {
+  const ROUTE_NAME = baseApiRoute(store.province);
   const date = formatDateToString(store.dates[index]);
-  HomeController.getRound({ date: date }, (res) => {
-    store.setSchedule(res.data.leagues);
-    store.setFavorites(res.data.leagues);
-    store.setScheduleIndex(index);
+  const { data } = await useFetch(`${ROUTE_NAME}/games/round`, {
+    query: { date: date },
   });
+  store.setSchedule(data.value.leagues);
+  store.setFavorites(data.value.leagues);
+  store.setScheduleIndex(index);
 }
 
 function toggleSchedule() {

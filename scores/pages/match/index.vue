@@ -1,8 +1,8 @@
 <template>
-  <div v-if="isLoading">
+  <div>
     <Header title="MATCH" />
     <MatchInfo :game="game" />
-    <div v-if="isInfoLoadedSuccessfully">
+    <div>
       <KitContainer />
       <div class="match-lastfivegames-container">
         <LastFiveGames class="match-lastfivegames-item" />
@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import MatchController from "~~/api/calls/match";
+import baseApiRoute from "~~/api/baseApiRoute";
 import { getLastFiveGames } from "~~/logic/util.js";
 import { useScoresStore } from "~~/store/scores";
 
@@ -33,73 +33,61 @@ useHead({
 });
 
 const store = useScoresStore();
-const isLoading = ref(false);
-const game = ref(null);
-const info = ref(null);
-const isInfoLoadedSuccessfully = ref(false);
-
 const route = useRoute();
+const game = ref(route.query);
+const ROUTE_NAME = baseApiRoute(store.province);
+
+const [{ data: match }, { data: league }] = await Promise.all([
+  useFetch(`${ROUTE_NAME}/clubs/match`, {
+    query: { home: game.value?.homeTeam, away: game.value?.awayTeam },
+  }),
+  useFetch(`${ROUTE_NAME}/rankings`, {
+    query: { league: game.value?.league },
+  }),
+]);
+
+const lastFiveGamesForHomeTeam = getLastFiveGames(match.value?.homeTeamMatches, game.value?.homeTeam);
+const lastFiveGamesForAwayTeam = getLastFiveGames(match.value?.awayTeamMatches, game.value?.awayTeam);
+
+store.setLastFiveGames({
+  home: lastFiveGamesForHomeTeam,
+  away: lastFiveGamesForAwayTeam,
+});
+
+store.setRanking(league.value.ranking);
+store.setKit({
+  home: match.value?.homeTeam?.kit,
+  away: match.value?.awayTeam?.kit,
+});
+store.setMatchTeams({
+  home: match.value?.homeTeam?.name,
+  away: match.value?.awayTeam?.name,
+});
 
 function getAddress() {
-  if (info.value) {
-    return `${info.value.homeTeam.street}, ${info.value.homeTeam.county}`;
+  if (match.value) {
+    return `${match.value?.homeTeam?.street}, ${match.value?.homeTeam?.county}`;
   }
   return "";
 }
 function getRemark() {
-  if (info.value) {
-    return info.value.homeTeam.remark;
+  if (match.value) {
+    return match.value?.homeTeam?.remark;
   }
   return "";
 }
 function getArtificialPitch() {
-  if (info.value) {
-    return info.value.homeTeam.artificial;
+  if (match.value) {
+    return match.value?.homeTeam?.artificial;
   }
   return "";
 }
 function isRemarkVisible() {
-  if (info.value && info.value.homeTeam.remark.length > 0) {
+  if (match.value && match.value?.homeTeam?.remark?.length > 0) {
     return true;
   }
   return false;
 }
-
-onMounted(() => {
-  game.value = route.query;
-  MatchController.get(
-    {
-      firstParam: { home: game.value.homeTeam, away: game.value.awayTeam },
-      secondParam: { league: game.value.league },
-    },
-    (res) => {
-      info.value = res[0].data;
-
-      const lastFiveGamesForHomeTeam = getLastFiveGames(info.value.homeTeamMatches, game.value.homeTeam);
-      const lastFiveGamesForAwayTeam = getLastFiveGames(info.value.awayTeamMatches, game.value.awayTeam);
-
-      store.setLastFiveGames({
-        home: lastFiveGamesForHomeTeam,
-        away: lastFiveGamesForAwayTeam,
-      });
-
-      store.setRanking(res[1].data.ranking);
-      store.setKit({
-        home: info.value.homeTeam.kit,
-        away: info.value.awayTeam.kit,
-      });
-      const matchTeams = {
-        home: info.value.homeTeam.name,
-        away: info.value.awayTeam.name,
-      };
-      store.setMatchTeams(matchTeams);
-      isLoading.value = true;
-      if (info.value.homeTeam.id && info.value.awayTeam.id) {
-        isInfoLoadedSuccessfully.value = true;
-      }
-    }
-  );
-});
 </script>
 
 <style scoped>

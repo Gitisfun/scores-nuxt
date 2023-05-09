@@ -43,12 +43,12 @@ export default {
     },
   },
   methods: {
-    addToFavorites() {
-      addFavoritesInCache(this.team);
+    async addToFavorites() {
+      await addFavoritesInCache(this.team);
       this.refreshList();
     },
-    removeFromFavorites() {
-      removeFavoritesFromCache(this.team);
+    async removeFromFavorites() {
+      await removeFavoritesFromCache(this.team);
       this.refreshList();
     },
     refreshList() {

@@ -8,6 +8,8 @@
 
 <script setup>
 import { Icon } from "@iconify/vue";
+import { ANTWERPEN, BRABANT } from "~~/logic/constants/provinces";
+import { HOME_ROUTE } from "~~/logic/constants/routes";
 
 const route = useRoute();
 const router = useRouter();
@@ -19,8 +21,9 @@ function isOnHomePage() {
   if ("index" === route.name) return true;
   return false;
 }
-function goBack() {
-  router.back();
+async function goBack() {
+  if (BRABANT === route.name || ANTWERPEN === route.name) await navigateTo(HOME_ROUTE);
+  else router.back();
 }
 </script>
 

@@ -1,43 +1,30 @@
 <template>
-  <div>
-    <Header title="KAVVV VB & OV Uitslagen" />
-
-    <Loader v-if="isLoading" />
-
-    <DateContainer v-if="!isLoading" />
-    <div v-if="store.schedule.length > 0 && !isLoading">
-      <div>
-        <FavoritesHeader />
-        <NoFavoritesInfo />
-        <Game v-for="game in store.favorites" :game="game" :key="game.id" />
-      </div>
-      <div v-for="league in store.schedule" :key="league.name">
-        <LeagueHeader :title="league.name" :key="league.name" />
-        <Game v-for="game in league.games" :game="game" :key="game.id" />
-      </div>
-    </div>
+  <Header title="KAVVV Uitslagen" />
+  <div class="home-box">
+    <h2 class="home-info-box">Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Antwerpen, Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen van jouw lokale club!</h2>
+    <h4>Kies een provincie</h4>
+    <NavigationItem title="Antwerpen" :route="ANTWERPEN_ROUTE" />
+    <NavigationItem title="Vlaams-Brabant & Oost-Vlaanderen" :route="BRABANT_ROUTE" />
+    <h4>Zoek jouw club</h4>
   </div>
 </template>
 
 <script setup>
-import HomeController from "~~/api/calls/home";
-import { useScoresStore } from "~~/store/scores";
-import { convertToDateList, findClosestDateIndex } from "~~/logic/date";
-import { storeDatesInCache } from "~~/logic/cache";
+import { ANTWERPEN_ROUTE, BRABANT_ROUTE } from "~~/logic/constants/routes";
 
 useHead({
   title: "KAVVV uitslagen",
   meta: [
     {
       name: "description",
-      content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen jouw lokale club!",
+      content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Antwerpen, Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen van jouw lokale club!",
     },
     {
       name: "google-site-verification",
       content: "i-d5dcGOmI5iffIB3u5T1hYZjLtJjcaCTl2xrbYTFx8",
     },
     { property: "og:title", content: "KAVVV Uitslagen" },
-    { property: "og:description", content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen jouw lokale club!" },
+    { property: "og:description", content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Antwerpen, Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen van jouw lokale club!" },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://kavvv-uitslagen.be" },
     { property: "og:locale", content: "nl_Be" },
@@ -50,26 +37,19 @@ useHead({
     { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
   ],
 });
-
-const isLoading = ref(true);
-const store = useScoresStore();
-
-onMounted(() => {
-  HomeController.get(null, (res) => {
-    isLoading.value = false;
-
-    const dateList = convertToDateList(res[0].data);
-    store.setDates(dateList);
-
-    const leagues = res[1].data.leagues;
-    store.setSchedule(leagues);
-    store.setFavorites(leagues);
-    const list = convertToDateList(dateList);
-    storeDatesInCache(list);
-    store.setDates(list);
-
-    const index = findClosestDateIndex(list);
-    store.setScheduleIndex(index);
-  });
-});
 </script>
+
+<style>
+.home-box {
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.home-info-box {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+</style>

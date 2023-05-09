@@ -15,22 +15,6 @@ export const isOnRoute = (context, routeName) => {
   return context.$route.name === routeName;
 };
 
-export const navigate = (context, name, obj) => {
-  if (obj) {
-    context.$router.push({
-      name: name,
-      params: {
-        obj,
-      },
-    });
-  } else {
-    context.$router.push({
-      name: name,
-    });
-  }
-  window.scrollTo({ top: 0, behavior: "smooth" });
-};
-
 export const filterListByTeam = (list, team) => {
   let temp = [];
   for (const round of list) {
@@ -68,10 +52,7 @@ export const getFavoritesFromSchedule = (list) => {
   if (favoritesList && favoritesList.length > 0) {
     for (const league of list) {
       for (const game of league.games) {
-        if (
-          favoritesList.includes(game.homeTeam.trim()) ||
-          favoritesList.includes(game.awayTeam.trim())
-        ) {
+        if (favoritesList.includes(game.homeTeam.trim()) || favoritesList.includes(game.awayTeam.trim())) {
           temp.push(game);
         }
       }
@@ -97,25 +78,13 @@ export const getLastFiveGames = (list, team) => {
       const homeScore = parseInt(match.homeScore);
       const awayScore = parseInt(match.awayScore);
 
-      if (
-        homeScore > awayScore &&
-        team.trim().includes(match.homeTeam.trim())
-      ) {
+      if (homeScore > awayScore && team.trim().includes(match.homeTeam.trim())) {
         result = "W";
-      } else if (
-        homeScore > awayScore &&
-        team.trim().includes(match.awayTeam.trim())
-      ) {
+      } else if (homeScore > awayScore && team.trim().includes(match.awayTeam.trim())) {
         result = "L";
-      } else if (
-        homeScore < awayScore &&
-        team.trim().includes(match.homeTeam.trim())
-      ) {
+      } else if (homeScore < awayScore && team.trim().includes(match.homeTeam.trim())) {
         result = "L";
-      } else if (
-        homeScore < awayScore &&
-        team.trim().includes(match.awayTeam.trim())
-      ) {
+      } else if (homeScore < awayScore && team.trim().includes(match.awayTeam.trim())) {
         result = "W";
       } else {
         result = "D";

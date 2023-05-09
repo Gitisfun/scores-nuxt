@@ -6,9 +6,15 @@ const KEY_MATCH = "scores-match";
 const KEY_FAVORITES = "scores-favorites";
 const KEY_THROTTLE = "scores-throttle";
 
-const storeInLocalstorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+const storeInLocalstorage = (key, value) => {
+  const cookie = useCookie(key);
+  cookie.value = value;
+};
 
-const getFromLocalstorage = (key) => JSON.parse(localStorage.getItem(key));
+const getFromLocalstorage = (key) => {
+  const cookie = useCookie(key);
+  return cookie ? cookie.value : null;
+};
 
 export const getLastVisitedFromCache = (value) => {
   if (value) {

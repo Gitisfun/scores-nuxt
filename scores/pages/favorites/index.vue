@@ -9,7 +9,8 @@
 </template>
 
 <script setup>
-import FavoritesController from "~~/api/calls/favorites";
+import { useScoresStore } from "~~/store/scores";
+import baseApiRoute from "~~/api/baseApiRoute";
 
 useHead({
   title: "KAVVV uitslagen",
@@ -21,14 +22,13 @@ useHead({
   ],
   link: [{ rel: "canonical", href: "https://kavvv-uitslagen.be" }],
 });
+const store = useScoresStore();
+const ROUTE_NAME = baseApiRoute(store.province);
 
-const teams = ref([]);
-
-onMounted(() => {
-  FavoritesController.get(null, (res) => {
-    const temp = res.data.map((e) => e.name);
-    teams.value = temp.sort();
-  });
+const { data: teams } = await useFetch(`${ROUTE_NAME}/clubs`, {
+  transform: (data) => {
+    return data.map((e) => e.name).sort();
+  },
 });
 </script>
 
