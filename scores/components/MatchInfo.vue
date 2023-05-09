@@ -17,7 +17,7 @@
 
 <script>
 import ImageMapperMatch from "./ImageMapperMatch.vue";
-import { format } from "date-fns";
+import { format } from "date-fns/index.js";
 
 export default {
   name: "MatchInfo",

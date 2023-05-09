@@ -1,4 +1,4 @@
-import { addMinutes, addSeconds, getTime, isAfter } from "date-fns";
+import { addMinutes, addSeconds, getTime, isAfter } from "date-fns/index.js";
 import { getThrottleDateFromCache, storeThrottleDateInCache } from "./cache";
 
 export const shouldThrottle = () => {
