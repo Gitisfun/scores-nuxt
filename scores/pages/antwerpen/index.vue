@@ -55,11 +55,11 @@ const ROUTE_NAME = baseApiRoute(ANTWERPEN);
 const [{ data: dates }, { data: leagues }] = await Promise.all([useFetch(`${ROUTE_NAME}/dates`), useFetch(`${ROUTE_NAME}/games/round`)]);
 store.setProvince(ANTWERPEN);
 
-const dateList = convertToDateList(dates.value);
+const dateList = convertToDateList(dates?.value);
 store.setDates(dateList);
-store.setSchedule(leagues.value.leagues);
+store.setSchedule(leagues?.value?.leagues);
 
-store.setFavorites(leagues.value.leagues);
+store.setFavorites(leagues?.value?.leagues);
 const list = convertToDateList(dateList);
 storeDatesInCache(list);
 store.setDates(list);
