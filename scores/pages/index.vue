@@ -1,16 +1,22 @@
 <template>
-  <Header title="KAVVV Uitslagen" />
+  <Header v-if="!isSearching" title="KAVVV Uitslagen" />
   <div class="home-box">
-    <h2 class="home-info-box">Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Antwerpen, Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen van jouw lokale club!</h2>
-    <h4>Kies een provincie</h4>
-    <NavigationItem title="Antwerpen" :route="ANTWERPEN_ROUTE" />
-    <NavigationItem title="Vlaams-Brabant & Oost-Vlaanderen" :route="BRABANT_ROUTE" />
-    <SearchClub />
+    <div v-if="!isSearching">
+      <h2 class="home-info-box">Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Antwerpen, Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen van jouw lokale club!</h2>
+      <h4>Kies een provincie</h4>
+      <NavigationItem title="Antwerpen" :route="ANTWERPEN_ROUTE" />
+      <NavigationItem title="Vlaams-Brabant & Oost-Vlaanderen" :route="BRABANT_ROUTE" />
+    </div>
+    <SearchClub :setSearching="setSearching" />
   </div>
 </template>
 
 <script setup>
 import { ANTWERPEN_ROUTE, BRABANT_ROUTE } from "~~/logic/constants/routes";
+
+const isSearching = ref(false);
+
+const setSearching = (value) => (isSearching.value = value);
 
 useHead({
   title: "KAVVV uitslagen",

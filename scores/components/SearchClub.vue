@@ -1,6 +1,6 @@
 <template>
   <h4>Zoek jouw club</h4>
-  <input id="searchInputClub" class="search-club-input" v-model="club" @input="search" />
+  <input id="searchInputClub" class="search-club-input" v-model="club" @input="search" @focus="setSearching(true)" @blur="setSearching(false)" />
   <Club v-for="item in searchedClubs" :key="item.id" :team="item.name" />
   <div v-if="hasFoundClubs" class="search-club-no-results">Geen clubs gevonden...</div>
   <div id="bottomElementOfPage" style="color: white; height: 150px">.</div>
@@ -10,12 +10,17 @@
 import baseApiRoute from "~~/api/baseApiRoute";
 import { ANTWERPEN, BRABANT } from "~~/logic/constants/provinces";
 
+const { setSearching } = defineProps({
+  setSearching: Function,
+});
+
 const club = ref("");
 const clubs = ref([]);
 const searchedClubs = ref([]);
 const hasFoundClubs = ref(false);
 
 const firstLoad = ref(true);
+/*
 const scrollToElement = (element) => {
   const el = document.getElementById(element);
 
@@ -23,6 +28,7 @@ const scrollToElement = (element) => {
     el.scrollIntoView();
   }
 };
+*/
 
 const search = async (e) => {
   if (firstLoad.value) {
@@ -38,11 +44,9 @@ const search = async (e) => {
     hasFoundClubs.value = false;
     searchedClubs.value = clubs.value.filter((c) => c.name.toUpperCase().includes(searchText.toUpperCase())).slice(0, 5);
     if (searchedClubs.value.length === 0) hasFoundClubs.value = true;
-    scrollToElement("bottomElementOfPage");
   } else {
     hasFoundClubs.value = false;
     searchedClubs.value = [];
-    scrollToElement("searchInputClub");
   }
 };
 </script>
