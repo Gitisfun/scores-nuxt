@@ -1,6 +1,6 @@
 <template>
   <h4>Zoek jouw club</h4>
-  <input class="search-club-input" v-model="club" @input="search" />
+  <input id="searchInputClub" class="search-club-input" v-model="club" @input="search" />
   <Club v-for="item in searchedClubs" :key="item.id" :team="item.name" />
   <div v-if="hasFoundClubs" class="search-club-no-results">Geen clubs gevonden...</div>
   <div id="bottomElementOfPage" style="color: white; height: 150px">.</div>
@@ -16,8 +16,8 @@ const searchedClubs = ref([]);
 const hasFoundClubs = ref(false);
 
 const firstLoad = ref(true);
-const scrollToBottom = () => {
-  const el = document.getElementById("bottomElementOfPage");
+const scrollToElement = (element) => {
+  const el = document.getElementById(element);
 
   if (el) {
     el.scrollIntoView();
@@ -38,11 +38,12 @@ const search = async (e) => {
     hasFoundClubs.value = false;
     searchedClubs.value = clubs.value.filter((c) => c.name.toUpperCase().includes(searchText.toUpperCase())).slice(0, 5);
     if (searchedClubs.value.length === 0) hasFoundClubs.value = true;
+    scrollToElement("bottomElementOfPage");
   } else {
     hasFoundClubs.value = false;
     searchedClubs.value = [];
+    scrollToElement("searchInputClub");
   }
-  scrollToBottom();
 };
 </script>
 
