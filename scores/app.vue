@@ -12,6 +12,7 @@ nuxtApp.hook("page:start", () => {
 });
 nuxtApp.hook("page:finish", () => {
   loading.value = false;
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
 });
 </script>
 
