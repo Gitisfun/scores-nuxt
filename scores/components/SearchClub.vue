@@ -3,7 +3,7 @@
   <input class="search-club-input" v-model="club" @input="search" />
   <Club v-for="item in searchedClubs" :key="item.id" :team="item.name" />
   <div v-if="hasFoundClubs" class="search-club-no-results">Geen clubs gevonden...</div>
-  <div style="color: white" ref="bottomElementOfPage">Bottom of page</div>
+  <div id="bottomElementOfPage" style="color: white">.</div>
 </template>
 
 <script setup>
@@ -17,8 +17,11 @@ const hasFoundClubs = ref(false);
 
 const firstLoad = ref(true);
 const scrollToBottom = () => {
-  const container = this.$refs.scrollContainer;
-  container.scrollTop = container.scrollHeight;
+  const el = document.getElementById("bottomElementOfPage");
+
+  if (el) {
+    el.scrollIntoView();
+  }
 };
 
 const search = async (e) => {
