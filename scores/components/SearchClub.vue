@@ -21,11 +21,11 @@ const hasFoundClubs = ref(false);
 const firstLoad = ref(true);
 
 const setFocus = () => {
-  setSearching(true);
-  document.body.scrollTop = document.documentElement.scrollTop = 0;
+  //document.body.scrollTop = document.documentElement.scrollTop = 0;
 };
 
 const search = async (e) => {
+  setSearching(true);
   if (firstLoad.value) {
     firstLoad.value = false;
     const ROUTE_NAME_BRABANT = baseApiRoute(BRABANT);
