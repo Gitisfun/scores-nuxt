@@ -3,7 +3,7 @@
   <input class="search-club-input" v-model="club" @input="search" />
   <Club v-for="item in searchedClubs" :key="item.id" :team="item.name" />
   <div v-if="hasFoundClubs" class="search-club-no-results">Geen clubs gevonden...</div>
-  <div id="bottomElementOfPage" style="color: white">.</div>
+  <div id="bottomElementOfPage" style="color: white; height: 150px">.</div>
 </template>
 
 <script setup>
