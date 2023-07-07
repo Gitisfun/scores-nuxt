@@ -1,6 +1,6 @@
 <template>
-  <h4>Zoek jouw club</h4>
-  <input id="searchInputClub" class="search-club-input" v-model="club" @input="search" @focus="setSearching(true)" @blur="setSearching(false)" />
+  <h4 id="searchInputClub">Zoek jouw club</h4>
+  <input class="search-club-input" v-model="club" @input="search" @focus="setFocus" @blur="setSearching(false)" />
   <Club v-for="item in searchedClubs" :key="item.id" :team="item.name" />
   <div v-if="hasFoundClubs" class="search-club-no-results">Geen clubs gevonden...</div>
 </template>
@@ -19,7 +19,7 @@ const searchedClubs = ref([]);
 const hasFoundClubs = ref(false);
 
 const firstLoad = ref(true);
-/*
+
 const scrollToElement = (element) => {
   const el = document.getElementById(element);
 
@@ -27,7 +27,11 @@ const scrollToElement = (element) => {
     el.scrollIntoView();
   }
 };
-*/
+
+const setFocus = () => {
+  setSearching(true);
+  scrollToElement("searchInputClub");
+};
 
 const search = async (e) => {
   if (firstLoad.value) {
