@@ -18,6 +18,10 @@ nuxtApp.hook("page:finish", () => {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
 
+* {
+  touch-action: manipulation;
+}
+
 body {
   margin: 0;
   padding-top: 10px;
