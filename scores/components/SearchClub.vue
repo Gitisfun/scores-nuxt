@@ -20,17 +20,9 @@ const hasFoundClubs = ref(false);
 
 const firstLoad = ref(true);
 
-const scrollToElement = (element) => {
-  const el = document.getElementById(element);
-
-  if (el) {
-    el.scrollIntoView();
-  }
-};
-
 const setFocus = () => {
   setSearching(true);
-  scrollToElement("searchInputClub");
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
 };
 
 const search = async (e) => {
