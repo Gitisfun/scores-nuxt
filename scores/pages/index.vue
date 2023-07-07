@@ -5,7 +5,7 @@
     <h4>Kies een provincie</h4>
     <NavigationItem title="Antwerpen" :route="ANTWERPEN_ROUTE" />
     <NavigationItem title="Vlaams-Brabant & Oost-Vlaanderen" :route="BRABANT_ROUTE" />
-    <h4>Zoek jouw club</h4>
+    <SearchClub />
   </div>
 </template>
 
