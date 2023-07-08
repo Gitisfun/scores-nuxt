@@ -1,7 +1,7 @@
 <template>
-  <Header v-if="!isSearching" title="KAVVV Uitslagen" />
+  <Header v-if="isVisible" title="KAVVV Uitslagen" />
   <div class="home-box">
-    <div v-if="!isSearching">
+    <div v-if="isVisible">
       <h2 class="home-info-box">Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Antwerpen, Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen van jouw lokale club!</h2>
       <h4>Kies een provincie</h4>
       <NavigationItem title="Antwerpen" :route="ANTWERPEN_ROUTE" />
@@ -14,7 +14,14 @@
 <script setup>
 import { ANTWERPEN_ROUTE, BRABANT_ROUTE } from "~~/logic/constants/routes";
 
+const { isMobile } = useDevice();
+
 const isSearching = ref(false);
+
+const isVisible = computed(() => {
+  if (isSearching.value && isMobile) return false;
+  return true;
+});
 
 const setSearching = (value) => (isSearching.value = value);
 
