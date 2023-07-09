@@ -1,8 +1,28 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ["@pinia/nuxt", "nuxt-simple-sitemap", "@nuxtjs/google-adsense", "@nuxtjs/device"],
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/"],
+    },
+  },
   sitemap: {
     hostname: "https://kavvv-uitslagen.be",
+    /*
+    urls: async () => [
+      {
+        url: "/clubs/CP-Leeuw",
+        changefreq: "weekly",
+        priority: 1,
+      },
+      {
+        url: "/clubs/",
+        changefreq: "weekly",
+        priority: 1,
+      },
+    ],
+    */
 
     urls: async () => {
       const urls = [
@@ -19,7 +39,7 @@ export default defineNuxtConfig({
 
         // @ts-ignore
         return responseData[0].map((club) => ({
-          loc: `/club/${club.slug}`,
+          url: `/club/${club.slug}`,
           changefreq: "weekly",
           priority: 0.8,
         }));
@@ -29,12 +49,6 @@ export default defineNuxtConfig({
         return [];
       }
       //return [...responseData[0], ...responseData[1].map((club) => ({
-    },
-  },
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ["/"],
     },
   },
   "google-adsense": {
