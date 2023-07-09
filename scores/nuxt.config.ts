@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   },
   sitemap: {
     hostname: "https://kavvv-uitslagen.be",
-    /*
+
     urls: async () => [
       {
         url: "/clubs/CP-Leeuw",
@@ -17,13 +17,13 @@ export default defineNuxtConfig({
         priority: 1,
       },
       {
-        url: "/clubs/",
+        url: "/clubs/eendracht-vilvoorde",
         changefreq: "weekly",
         priority: 1,
       },
     ],
-    */
 
+    /*
     urls: async () => {
       const urls = [
         //'https://scraper-scores-antwerpen.herokuapp.com/api/clubs',
@@ -50,6 +50,7 @@ export default defineNuxtConfig({
       }
       //return [...responseData[0], ...responseData[1].map((club) => ({
     },
+    */
   },
   "google-adsense": {
     id: "ca-pub-9928832567373030",
