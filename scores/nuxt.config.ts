@@ -19,7 +19,7 @@ export default defineNuxtConfig({
 
         // @ts-ignore
         return responseData[0].map((club) => ({
-          loc: `/blog/${club.slug}`,
+          loc: `/club/${club.slug}`,
           changefreq: "weekly",
           priority: 0.8,
         }));
