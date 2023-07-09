@@ -2,7 +2,7 @@
   <div>
     <div class="round-container">
       <div id="games-container">
-        <Game v-for="game in round.games" :game="game" :key="game.homeTeam" />
+        <Game v-for="game in round.games" :game="game" :key="game.id" />
       </div>
     </div>
   </div>

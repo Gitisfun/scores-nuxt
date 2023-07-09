@@ -1,17 +1,23 @@
 <template>
-  <div class="club-container">
+  <div class="club-container" @click="navToClub">
     <ImageMapper :team="team" />
     <div class="club-text">{{ team }}</div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "Club",
-  props: {
-    team: String,
-  },
-};
+<script setup>
+import { CLUB_ROUTE } from "~~/logic/constants/routes";
+
+const { team, slug } = defineProps({
+  team: String,
+  slug: String,
+});
+
+async function navToClub() {
+  await navigateTo({
+    path: `${CLUB_ROUTE}/${slug}`,
+  });
+}
 </script>
 
 <style>

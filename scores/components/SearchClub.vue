@@ -1,7 +1,7 @@
 <template>
   <h4 id="searchInputClub">Zoek jouw club</h4>
   <input class="search-club-input" v-model="club" @input="search" @focus="setFocus" @blur="setSearching(false)" />
-  <Club v-for="item in searchedClubs" :key="item.id" :team="item.name" />
+  <Club v-for="item in searchedClubs" :key="item.id" :team="item.name" :slug="item.slug" />
   <div v-if="hasFoundClubs" class="search-club-no-results">Geen clubs gevonden...</div>
 </template>
 
