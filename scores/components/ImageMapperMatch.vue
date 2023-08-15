@@ -62,7 +62,7 @@
   <img v-else-if="team === `BRIK PELE`" src="../assets/brik-pele.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `Daltons`" src="../assets/daltons.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `DE BRUG`" src="../assets/de-brug.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
-  <img v-else-if="team === `DE GAAWE LEEUW`" src="../assets/de-gaauwe-leeuw.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `DE GAAWE LEEUW`" src="../assets/de-gaawe-leeuw.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `DE PRINCE`" src="../assets/de-prince.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `DEN 144`" src="../assets/den-144.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `DEURNESE TURNERS`" src="../assets/deurnese-turners.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
