@@ -31,6 +31,10 @@ async function navToClub() {
   font-size: 12px;
   font-weight: 500;
 }
+.club-container:hover {
+  cursor: pointer;
+  background: lightgray;
+}
 
 .club-container:active {
   border-radius: 5px;

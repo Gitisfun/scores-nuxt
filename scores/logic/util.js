@@ -63,47 +63,51 @@ export const getFavoritesFromSchedule = (list) => {
 };
 
 export const getLastFiveGames = (list, team) => {
-  for (const match of list) {
-    match.date = new Date(match.date);
-  }
-
-  list.sort((a, b) => a.date - b.date);
-
-  const temp = [];
-
-  for (const match of list) {
-    let result = "-";
-
-    if (match.homeScore.length > 0) {
-      const homeScore = parseInt(match.homeScore);
-      const awayScore = parseInt(match.awayScore);
-
-      if (homeScore > awayScore && team.trim().includes(match.homeTeam.trim())) {
-        result = "W";
-      } else if (homeScore > awayScore && team.trim().includes(match.awayTeam.trim())) {
-        result = "L";
-      } else if (homeScore < awayScore && team.trim().includes(match.homeTeam.trim())) {
-        result = "L";
-      } else if (homeScore < awayScore && team.trim().includes(match.awayTeam.trim())) {
-        result = "W";
-      } else {
-        result = "D";
-      }
-      temp.push({
-        result,
-        date: match.date,
-        home: match.homeTeam,
-        away: match.awayTeam,
-        score: `${match.homeScore} - ${match.awayScore}`,
-      });
+  try {
+    for (const match of list) {
+      match.date = new Date(match.date);
     }
+
+    list.sort((a, b) => a.date - b.date);
+
+    const temp = [];
+
+    for (const match of list) {
+      let result = "-";
+
+      if (match.homeScore.length > 0) {
+        const homeScore = parseInt(match.homeScore);
+        const awayScore = parseInt(match.awayScore);
+
+        if (homeScore > awayScore && team.trim().includes(match.homeTeam.trim())) {
+          result = "W";
+        } else if (homeScore > awayScore && team.trim().includes(match.awayTeam.trim())) {
+          result = "L";
+        } else if (homeScore < awayScore && team.trim().includes(match.homeTeam.trim())) {
+          result = "L";
+        } else if (homeScore < awayScore && team.trim().includes(match.awayTeam.trim())) {
+          result = "W";
+        } else {
+          result = "D";
+        }
+        temp.push({
+          result,
+          date: match.date,
+          home: match.homeTeam,
+          away: match.awayTeam,
+          score: `${match.homeScore} - ${match.awayScore}`,
+        });
+      }
+    }
+
+    const dateList = temp?.map((e) => e.date);
+
+    const index = findClosestDateIndex(dateList);
+
+    if (temp?.length > 5) return temp?.slice(-5);
+
+    return temp?.slice(0, index + 1);
+  } catch (error) {
+    return [];
   }
-
-  const dateList = temp?.map((e) => e.date);
-
-  const index = findClosestDateIndex(dateList);
-
-  if (temp?.length > 5) return temp?.slice(-5);
-
-  return temp?.slice(0, index + 1);
 };

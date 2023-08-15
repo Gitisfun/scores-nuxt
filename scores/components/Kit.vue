@@ -46,35 +46,43 @@ const { isHome } = defineProps({
 });
 
 const getCssVars = computed(() => {
-  let kit;
-  if (isHome === "home") {
-    kit = store.kit.home;
-  } else {
-    kit = store.kit.away;
-  }
-  if (kit) {
-    if (kit.shirt.colors.length > 1 && kit.pants.colors.length > 1) {
-      return {
-        "--bg-shirt-primary-color": kit.shirt.colors[0],
-        "--bg-shirt-secundary-color": kit.shirt.colors[1],
-        "--bg-pants-primary-color": kit.pants.colors[0],
-        "--bg-pants-secundary-color": kit.pants.colors[1],
-      };
-    } else if (kit.shirt.colors.length > 1 && kit.pants.colors.length <= 1) {
-      return {
-        "--bg-shirt-primary-color": kit.shirt.colors[0],
-        "--bg-shirt-secundary-color": kit.shirt.colors[1],
-        "--bg-pants-primary-color": kit.pants.colors[0],
-        "--bg-pants-secundary-color": kit.pants.colors[0],
-      };
-    } else if (kit.shirt.colors.length <= 1 && kit.pants.colors.length > 1) {
-      return {
-        "--bg-shirt-primary-color": kit.shirt.colors[0],
-        "--bg-shirt-secundary-color": kit.shirt.colors[0],
-        "--bg-pants-primary-color": kit.pants.colors[0],
-        "--bg-pants-secundary-color": kit.pants.colors[1],
-      };
-    } else if (kit.shirt.colors.length <= 1 && kit.pants.colors.length <= 1) {
+  try {
+    let kit;
+    if (isHome === "home") {
+      kit = store.kit.home;
+    } else {
+      kit = store.kit.away;
+    }
+    if (kit) {
+      if (kit.shirt.colors.length > 1 && kit.pants.colors.length > 1) {
+        return {
+          "--bg-shirt-primary-color": kit.shirt.colors[0],
+          "--bg-shirt-secundary-color": kit.shirt.colors[1],
+          "--bg-pants-primary-color": kit.pants.colors[0],
+          "--bg-pants-secundary-color": kit.pants.colors[1],
+        };
+      } else if (kit.shirt.colors.length > 1 && kit.pants.colors.length <= 1) {
+        return {
+          "--bg-shirt-primary-color": kit.shirt.colors[0],
+          "--bg-shirt-secundary-color": kit.shirt.colors[1],
+          "--bg-pants-primary-color": kit.pants.colors[0],
+          "--bg-pants-secundary-color": kit.pants.colors[0],
+        };
+      } else if (kit.shirt.colors.length <= 1 && kit.pants.colors.length > 1) {
+        return {
+          "--bg-shirt-primary-color": kit.shirt.colors[0],
+          "--bg-shirt-secundary-color": kit.shirt.colors[0],
+          "--bg-pants-primary-color": kit.pants.colors[0],
+          "--bg-pants-secundary-color": kit.pants.colors[1],
+        };
+      } else if (kit.shirt.colors.length <= 1 && kit.pants.colors.length <= 1) {
+        return {
+          "--bg-shirt-primary-color": kit.shirt.colors[0],
+          "--bg-shirt-secundary-color": kit.shirt.colors[0],
+          "--bg-pants-primary-color": kit.pants.colors[0],
+          "--bg-pants-secundary-color": kit.pants.colors[0],
+        };
+      }
       return {
         "--bg-shirt-primary-color": kit.shirt.colors[0],
         "--bg-shirt-secundary-color": kit.shirt.colors[0],
@@ -83,35 +91,37 @@ const getCssVars = computed(() => {
       };
     }
     return {
-      "--bg-shirt-primary-color": kit.shirt.colors[0],
-      "--bg-shirt-secundary-color": kit.shirt.colors[0],
-      "--bg-pants-primary-color": kit.pants.colors[0],
-      "--bg-pants-secundary-color": kit.pants.colors[0],
+      "--bg-shirt-primary-color": "black",
+      "--bg-shirt-secundary-color": "#f5f6fa",
+      "--bg-pants-primary-color": "#f5f6fa",
+      "--bg-pants-secundary-color": "black",
     };
+  } catch (error) {
+    return null;
   }
-  return {
-    "--bg-shirt-primary-color": "black",
-    "--bg-shirt-secundary-color": "#f5f6fa",
-    "--bg-pants-primary-color": "#f5f6fa",
-    "--bg-pants-secundary-color": "black",
-  };
 });
 
 const getKitStyle = computed(() => {
-  let kit;
-  if (isHome === "home") {
-    kit = store.kit.home.shirt;
-  } else {
-    kit = store.kit.away.shirt;
-  }
-  if (kit.style === Kit.SINGLE) {
-    return 2;
-  } else if (kit.style === Kit.STRIPED) {
-    return 0;
-  } else if (kit.style === Kit.MULTI) {
-    return 1;
-  } else {
-    return 2;
+  try {
+    let kit;
+    if (isHome === "home") {
+      kit = store.kit.home.shirt;
+    } else {
+      kit = store.kit.away.shirt;
+    }
+    if (kit.style === Kit.SINGLE) {
+      return 2;
+    } else if (kit.style === Kit.STRIPED) {
+      return 0;
+    } else if (kit.style === Kit.MULTI) {
+      return 1;
+    } else {
+      return 2;
+    }
+  } catch (error) {
+    console.log("%c error", "color: red");
+    console.log(error);
+    return null;
   }
 });
 </script>

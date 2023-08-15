@@ -53,6 +53,66 @@
   <img v-else-if="team === `VK De Vissers`" src="../assets/vkdevissers.png" alt="VK De Vissers" title="VK De Vissers" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `VK De Zwaanzers`" src="../assets/vkdezwaanzers.png" alt="VK De Zwaanzers" title="VK De Zwaanzers" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `Vc Houtem City`" src="../assets/vchoutemcity.png" alt="Vc Houtem City" title="Vc Houtem City" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `AC DE HEIDE`" src="../assets/ac-de-heide.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `AIR CONSULT`" src="../assets/air-consult.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `BACCHUS`" src="../assets/bacchus.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `BAR SALON`" src="../assets/bar-salon.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `BENNE 1980 A` || team===`BENNE 1980 B`" src="../assets/benne-1980.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `BIBAMUS`" src="../assets/bibamus.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `BRIK PELE`" src="../assets/brik-pele.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `Daltons`" src="../assets/daltons.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `DE BRUG`" src="../assets/de-brug.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `DE GAAWE LEEUW`" src="../assets/de-gaauwe-leeuw.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `DE PRINCE`" src="../assets/de-prince.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `DEN 144`" src="../assets/den-144.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `DEURNESE TURNERS`" src="../assets/deurnese-turners.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `DK NIEUWMOER`" src="../assets/dk-nieuwmoer.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `DODEKA SPORT`" src="../assets/dodeka-sport.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `EINTRACHT DEURNE`" src="../assets/eintracht-deurne.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `EKEREN WINKELSTAD`" src="../assets/ekeren-winkelstad.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `AMBER`|| team===`AMBER C`|| team===`AMBER D`|| team===`AMBER E`|| team===`AMBER F` || team===`AMBER G`" src="../assets/fc-amber.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `BERNIE`" src="../assets/fc-berne.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `BLOEMSCHIKKERS`" src="../assets/fc-bloemschikkers.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `CHOSSEL SPORT`" src="../assets/fc-chossel-sport.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `DE BRUURS`" src="../assets/fc-de-bruurs.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `DE KLINKAERT`" src="../assets/fc-de-klinkaert.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `FCK'89`" src="../assets/fck89.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `FOCUS UNITED`" src="../assets/focus-united.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `HET LOO`" src="../assets/het-loo.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `J&M TOLHUIS`" src="../assets/j-m-tolhuis.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `JEE DEE`" src="../assets/jee-dee.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `KATASTROOF`" src="../assets/katastroof.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `KLOOSTERSTRAAT` || team===`KLOOSTERSTRAAT B`" src="../assets/kloosterstraat.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `-----`" src="../assets/la-pantera.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `LUNATICS`" src="../assets/lunatics.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `MATTI`" src="../assets/matti.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `MOLLY BLOOMS A` || team===`MOLLY BLOOMS B`" src="../assets/molly-blooms.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `NIEUW STABROEK`" src="../assets/nieuw-stabroek.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `NOEVEREN`" src="../assets/noeveren.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `OLYMP`" src="../assets/olymp.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `OOF`" src="../assets/oof.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `PAGODE`" src="../assets/pagode.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `PANDA`" src="../assets/panda.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `PEUCHEMISE`" src="../assets/peuchemise.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `RACING GOBI A` || team===`RACING GOBI B`" src="../assets/racing-gobi.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `REUNION MERXEM`" src="../assets/reunion-merxem.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `Royal Sporting KOT FC`" src="../assets/royal-sporting-kot-fc.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `ROYAL ZEEZICHT`" src="../assets/royal-zeezicht.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `SAVA A` || team===`SAVA B` || team===`SAVA C`" src="../assets/sava.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `SCHONENBERG`" src="../assets/schonenberg.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `ST. JOZEF`" src="../assets/sint-jozef.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `RUISBROEK` || team===`RUISBROEK NEXT`" src="../assets/sk-ruisbroek.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `SPORTING MXM`" src="../assets/sporting-mxm.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `SPORTING NEERLAND`" src="../assets/sporting-neerland.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `SPORTING OLYMPIA`" src="../assets/sporting-olympia.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `SWINCHESTER UNITED`" src="../assets/swinchester.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `TC BRABO`" src="../assets/tc-brabo.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `THE D-C BOYS`" src="../assets/the-d-c-boys.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `V.B.`" src="../assets/v-b.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `VIDAM`" src="../assets/vidam.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `VINO`" src="../assets/vino.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `VOORCED`" src="../assets/voorced.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `WATERTOREN S.K.`" src="../assets/watertoren-sk.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
   <img v-else src="../assets/no_logo.png" alt="hometeam" title="hometeam" width="25" height="25" loading="lazy" />
 </template>
 
