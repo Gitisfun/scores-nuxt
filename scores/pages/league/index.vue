@@ -26,6 +26,7 @@ import { convertToDateList } from "~~/logic/date";
 import baseApiRoute from "~~/api/baseApiRoute";
 
 
+
 useHead({
   title: "KAVVV uitslagen",
   meta: [
