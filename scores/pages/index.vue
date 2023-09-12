@@ -7,13 +7,16 @@
       <NavigationItem title="Antwerpen" :route="ANTWERPEN_ROUTE" />
       <NavigationItem title="Vlaams-Brabant & Oost-Vlaanderen" :route="BRABANT_ROUTE" />
     </div>
-    <SearchClub :setSearching="setSearching" />
+    <SearchClub v-if="isEnabled" :setSearching="setSearching" />
   </div>
 </template>
 
 <script setup>
 import { ANTWERPEN_ROUTE, BRABANT_ROUTE } from "~~/logic/constants/routes";
 
+
+
+const isEnabled = false
 const { isMobile } = useDevice();
 
 const isSearching = ref(false);
