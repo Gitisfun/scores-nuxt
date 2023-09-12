@@ -1,7 +1,7 @@
 <template>
-  <div class="navigation-item" @click="navigate">
-    <h3 class="navigation-item-title">{{ title }}</h3>
-  </div>
+  <NuxtLink class="navigation-item" :to="{ name: route}">
+{{ title }}
+  </NuxtLink>
 </template>
 
 <script>
@@ -15,34 +15,24 @@ export default {
       type: String,
     },
   },
-  methods: {
-    async navigate() {
-      await navigateTo({
-        path: this.route,
-      });
-    },
-  },
 };
 </script>
 
 <style>
 .navigation-item {
   padding: 15px;
+  text-decoration: none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin-bottom: 15px;
   border-radius: 5px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-.navigation-item:hover {
-  color: white;
-  background: lightgrey;
-  cursor: pointer;
-}
-.navigation-item:active {
-  color: white;
-  background: #dff9fb;
-}
-.navigation-item-title {
   font-size: 14px;
   font-weight: 500;
+  color: black;
+  display: block;
+  
 }
+.navigation-item:hover {
+  background: lightgray;
+}
+
 </style>
