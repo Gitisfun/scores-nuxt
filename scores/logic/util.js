@@ -104,9 +104,28 @@ export const getLastFiveGames = (list, team) => {
 
     const index = findClosestDateIndex(dateList);
 
-    if (temp?.length > 5) return temp?.slice(-5);
 
-    return temp?.slice(0, index + 1);
+
+    
+    if (temp?.length > 5) return temp?.slice(-5)?.reverse();
+
+
+    const lastFiveGames = temp?.slice(0, index + 1);
+    
+    if(lastFiveGames.length < 5){
+      while(lastFiveGames.length !== 5){
+        lastFiveGames.push({
+          result: "-",
+          date: "",
+          home: "",
+          away: "",
+          score: "",
+        });
+      }
+    }
+
+    return lastFiveGames?.reverse()
+
   } catch (error) {
     return [];
   }
