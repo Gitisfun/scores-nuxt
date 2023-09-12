@@ -113,7 +113,7 @@
   <img v-else-if="team === `VINO`" src="../assets/vino.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `VOORCED`" src="../assets/voorced.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `WATERTOREN S.K.`" src="../assets/watertoren-sk.png" :alt="team" :title="team" width="25" height="25" loading="lazy" />
-  <img v-else src="../assets/no_logo.png" alt="hometeam" title="hometeam" width="25" height="25" loading="lazy" />
+  <img v-else src="../assets/no_logosmall.png" alt="hometeam" title="hometeam" width="25" height="25" loading="lazy" />
 </template>
 
 <script>
