@@ -54,7 +54,7 @@ store.setLastFiveGames({
   away: lastFiveGamesForAwayTeam,
 });
 
-store.setRanking(league.value.ranking);
+store.setRanking(league.value?.ranking);
 store.setKit({
   home: match.value?.homeTeam?.kit,
   away: match.value?.awayTeam?.kit,

@@ -25,6 +25,7 @@ const games = ref([]);
 
 const league = ref([]);
 
+// TODO: If you want to change club, enable both provinces here
 const ROUTE_NAME = baseApiRoute(BRABANT);
 const { data } = await useFetch(`${ROUTE_NAME}/clubs/${route.params.slug}`);
 

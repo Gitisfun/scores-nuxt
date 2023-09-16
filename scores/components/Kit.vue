@@ -119,8 +119,6 @@ const getKitStyle = computed(() => {
       return 2;
     }
   } catch (error) {
-    console.log("%c error", "color: red");
-    console.log(error);
     return null;
   }
 });
