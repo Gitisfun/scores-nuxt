@@ -61,21 +61,21 @@ const [{ data: dates }, { data: leagues }] = await Promise.all([
 ]);
 
 const temp = dates.value;
-temp.sort((a, b) => new Date(a.date) - new Date(b.date));
-const tempDates = convertToDateList(temp.map((e) => e.date));
+temp?.sort((a, b) => new Date(a?.date) - new Date(b?.date));
+const tempDates = convertToDateList(temp?.map((e) => e?.date));
 store.setDates(tempDates);
 const index = findClosestDateIndex(tempDates);
 store.setScheduleIndex(index);
 rounds.value = temp;
-ranking.value = leagues?.value.ranking;
-teams.value = ranking?.value?.map((e) => e.team.replace("\n", "").trim());
+ranking.value = leagues?.value?.ranking;
+teams.value = ranking?.value?.map((e) => e.team?.replace("\n", "")?.trim());
 
-store.setRanking(leagues?.value.ranking);
+store.setRanking(leagues?.value?.ranking);
 store.setScheduleLeague(temp);
 
 const selectedRound = computed(() => {
-  if (rounds.value.length === 0) return null;
-  return rounds.value[store.scheduleIndex];
+  if (rounds.value?.length === 0) return null;
+  return rounds.value[store?.scheduleIndex];
 });
 const leagueTeamsList = computed(() => {
   if (teams.value) {
@@ -85,7 +85,7 @@ const leagueTeamsList = computed(() => {
 });
 
 function filterSchedule(selectedTeam) {
-  schedule.value.refresh(selectedTeam);
+  schedule.value?.refresh(selectedTeam);
 }
 function toggleSchedule() {
   isFullScheduleShown.value = !isFullScheduleShown.value;
