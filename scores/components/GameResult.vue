@@ -30,7 +30,6 @@ export default {
 
 <style scoped>
 .game-result-container {
-  flex: 1;
   text-align: center;
   background-color: var(--game-result-color);
   border: 1px solid var(--game-result-color);

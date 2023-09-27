@@ -1,16 +1,16 @@
 <template>
   <div class="match-info-container">
     <div class="match-info-team">
-      <ImageMapperMatch :team="game.homeTeam" />
-      <div class="match-info-team-text">{{ game.homeTeam }}</div>
+      <ImageMapperMatch :team="game?.homeTeam" />
+      <div class="match-info-team-text">{{ game?.homeTeam }}</div>
     </div>
     <div class="match-info-score">
       <div class="match-info-info-score-time">{{ formattedScoreOrTime }}</div>
       <div class="match-info-info-score-date">{{ formattedDate }}</div>
     </div>
     <div class="match-info-team">
-      <ImageMapperMatch :team="game.awayTeam" />
-      <div class="match-info-team-text">{{ game.awayTeam }}</div>
+      <ImageMapperMatch :team="game?.awayTeam" />
+      <div class="match-info-team-text">{{ game?.awayTeam }}</div>
     </div>
   </div>
 </template>

@@ -4,9 +4,14 @@
     <MatchInfo :game="game" />
     <div>
       <KitContainer />
-      <div class="match-lastfivegames-container">
+      <div v-if="isDetailsShown" class="match-lastfivegames-container">
         <LastFiveGames class="match-lastfivegames-item" />
         <LastFiveGames isHomeTeam="no" class="match-lastfivegames-item" />
+      </div>
+      <button class="match-detail-button" v-if="isDetailsShown" @click="showDetails">Show details</button>
+      <div v-if="!isDetailsShown" style="display: flex; gap: 25px">
+        <LastFiveGamesDetails  :team="game?.homeTeam" />
+        <LastFiveGamesDetails isHomeTeam="no" :team="game?.awayTeam" />
       </div>
       <Address :address="getAddress()" />
       <ArtificialPitch :text="getArtificialPitch()" />
@@ -35,6 +40,7 @@ useHead({
 const store = useScoresStore();
 const route = useRoute();
 const game = ref(route.query);
+const isDetailsShown = ref(false)
 const ROUTE_NAME = baseApiRoute(store.province);
 
 const [{ data: match }, { data: league }] = await Promise.all([
@@ -63,6 +69,8 @@ store.setMatchTeams({
   home: match.value?.homeTeam?.name,
   away: match.value?.awayTeam?.name,
 });
+
+const showDetails = () => isDetailsShown.value = true
 
 function getAddress() {
   if (match.value) {
@@ -99,5 +107,12 @@ function isRemarkVisible() {
 }
 .match-lastfivegames-item {
   flex: 1;
+}
+.match-detail-button{
+  all:unset;
+  border: 1px solid black;
+  border-radius: 5px;
+
+  padding: 5px
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="lastfivegames-item-container">
-    <GameResult v-for="item in getGames" :text="item.result" :key="item.date" />
+    <GameResult style="flex: 1" v-for="item in getGames" :text="item.result" :key="item.date" />
   </div>
 </template>
 
