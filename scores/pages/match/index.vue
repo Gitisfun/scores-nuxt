@@ -9,8 +9,8 @@
         <LastFiveGames isHomeTeam="no" class="match-lastfivegames-item" />
       </div>
       <button class="match-detail-button" v-if="isDetailsShown" @click="showDetails">Show details</button>
-      <div v-if="!isDetailsShown" style="display: flex; gap: 25px">
-        <LastFiveGamesDetails  :team="game?.homeTeam" />
+      <div v-if="!isDetailsShown" class="match-lastfivegamesdetails-container">
+        <LastFiveGamesDetails :team="game?.homeTeam" />
         <LastFiveGamesDetails isHomeTeam="no" :team="game?.awayTeam" />
       </div>
       <Address :address="getAddress()" />
@@ -112,7 +112,24 @@ function isRemarkVisible() {
   all:unset;
   border: 1px solid black;
   border-radius: 5px;
-
   padding: 5px
+
+}
+
+.match-lastfivegamesdetails-container{
+  display: flex; 
+  gap: 25px;
+}
+@media (max-width: 500px) {
+  .match-lastfivegamesdetails-container{
+    padding: 5px;
+    gap: 5px;
+  }
+}
+@media (max-width: 375px) {
+  .match-lastfivegamesdetails-container{
+    padding: 0px;
+    gap: 0px;
+  }
 }
 </style>

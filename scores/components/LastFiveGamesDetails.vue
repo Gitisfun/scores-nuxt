@@ -47,21 +47,53 @@ const getOpponent = (game) => {
     text-align: center;
     border-radius: 5px;
     font-size: 12px;
-
-
     font-family: "Poppins", sans-serif;
 }
 
 .lastfivegames-details-item-score{
     flex: 1;
     width: 50px;
-    margin:5px;
+    margin: 5px;
     text-align: center;
-    background-color: white;
-    border-radius: 5px;
     font-family: "Poppins", sans-serif;
     font-size: 12px;
     font-weight: bold;
     color: black;
+}
+
+@media (max-width: 500px) {
+  .lastfivegames-details-item-team{
+      flex: 4; 
+      font-weight: 300;
+      margin: 5px;
+      text-align: center;
+      font-size: 10px;
+      font-family: "Poppins", sans-serif;
+  }
+
+  .lastfivegames-details-item-score{
+      flex: 1;
+      margin: 5px;
+      text-align: center;
+      font-size: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .lastfivegames-details-item-team{
+      flex: 4; 
+      font-weight: 300;
+      margin: 5px;
+      text-align: center;
+      font-size: 8px;
+      font-family: "Poppins", sans-serif;
+  }
+
+  .lastfivegames-details-item-score{
+      flex: 1;
+      margin: 5px;
+      text-align: center;
+      font-size: 8px;
+  }
 }
 </style>
