@@ -23,35 +23,57 @@ import { storeDatesInCache } from "~~/logic/cache";
 import baseApiRoute from "~~/api/baseApiRoute";
 import { BRABANT } from "~~/logic/constants/provinces";
 
+console.log("A");
 useHead({
   title: "KAVVV Vlaams-Brabant & Oost-Vlaanderen",
   meta: [
     {
       name: "description",
-      content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen jouw lokale club!",
+      content:
+        "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen jouw lokale club!",
     },
     {
       name: "google-site-verification",
       content: "i-d5dcGOmI5iffIB3u5T1hYZjLtJjcaCTl2xrbYTFx8",
     },
     { property: "og:title", content: "KAVVV Uitslagen" },
-    { property: "og:description", content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen jouw lokale club!" },
+    {
+      property: "og:description",
+      content:
+        "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de uitslagen jouw lokale club!",
+    },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://kavvv-uitslagen.be/brabant" },
     { property: "og:locale", content: "nl_Be" },
-    { property: "og:image", content: "https://kavvv-uitslagen.be/mstile-144x144.png" },
+    {
+      property: "og:image",
+      content: "https://kavvv-uitslagen.be/mstile-144x144.png",
+    },
   ],
   htmlAttrs: { lang: "nl" },
   link: [{ rel: "canonical", href: "https://kavvv-uitslagen.be/brabant" }],
   link: [
-    { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
-    { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      href: "/favicon-32x32.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "16x16",
+      href: "/favicon-16x16.png",
+    },
   ],
 });
 const store = useScoresStore();
 const ROUTE_NAME = baseApiRoute(BRABANT);
 
-const [{ data: dates }, { data: leagues }] = await Promise.all([useFetch(`${ROUTE_NAME}/dates`), useFetch(`${ROUTE_NAME}/games/round`)]);
+const [{ data: dates }, { data: leagues }] = await Promise.all([
+  useFetch(`${ROUTE_NAME}/dates`),
+  useFetch(`${ROUTE_NAME}/games/round`),
+]);
 store.setProvince(BRABANT);
 
 const dateList = convertToDateList(dates?.value);
@@ -64,4 +86,8 @@ store.setDates(list);
 
 const index = findClosestDateIndex(list);
 store.setScheduleIndex(index);
+
+onMounted(async () => {
+  await useFetch(`${ROUTE_NAME}/statistics/increment`);
+});
 </script>
