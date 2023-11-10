@@ -86,4 +86,11 @@ store.setDates(list);
 
 const index = findClosestDateIndex(list);
 store.setScheduleIndex(index);
+
+const { gtag } = useGtag();
+
+gtag("antwerpen", "visit", {
+  app_name: "KVVV",
+  screen_name: "antwerpen",
+});
 </script>

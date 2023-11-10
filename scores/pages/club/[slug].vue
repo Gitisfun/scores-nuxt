@@ -89,4 +89,11 @@ games.value = data?.value?.matches?.sort(
 );
 league.value = data?.value?.leagueFullName;
 store.setRanking(data?.value?.ranking?.ranking);
+
+const { gtag } = useGtag();
+
+gtag(route?.params?.slug, "visit", {
+  app_name: "KVVV",
+  screen_name: "club",
+});
 </script>

@@ -17,7 +17,8 @@ useHead({
   meta: [
     {
       name: "description",
-      content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Kies hier een favoriet team!",
+      content:
+        "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Kies hier een favoriet team!",
     },
   ],
   link: [{ rel: "canonical", href: "https://kavvv-uitslagen.be" }],
@@ -29,6 +30,13 @@ const { data: teams } = await useFetch(`${ROUTE_NAME}/clubs`, {
   transform: (data) => {
     return data?.map((e) => e?.name)?.sort();
   },
+});
+
+const { gtag } = useGtag();
+
+gtag("favorites", "visit", {
+  app_name: "KVVV",
+  screen_name: "favorites",
 });
 </script>
 

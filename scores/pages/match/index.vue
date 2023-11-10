@@ -8,7 +8,13 @@
         <LastFiveGames class="match-lastfivegames-item" />
         <LastFiveGames isHomeTeam="no" class="match-lastfivegames-item" />
       </div>
-      <button class="match-detail-button" v-if="isDetailsShown" @click="showDetails">Show details</button>
+      <button
+        class="match-detail-button"
+        v-if="isDetailsShown"
+        @click="showDetails"
+      >
+        Show details
+      </button>
       <div v-if="!isDetailsShown" class="match-lastfivegamesdetails-container">
         <LastFiveGamesDetails :team="game?.homeTeam" />
         <LastFiveGamesDetails isHomeTeam="no" :team="game?.awayTeam" />
@@ -31,7 +37,8 @@ useHead({
   meta: [
     {
       name: "description",
-      content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Wedstrijdverslag van jouw lokale team!",
+      content:
+        "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Wedstrijdverslag van jouw lokale team!",
     },
   ],
   link: [{ rel: "canonical", href: "https://kavvv-uitslagen.be" }],
@@ -40,7 +47,7 @@ useHead({
 const store = useScoresStore();
 const route = useRoute();
 const game = ref(route.query);
-const isDetailsShown = ref(false)
+const isDetailsShown = ref(false);
 const ROUTE_NAME = baseApiRoute(store.province);
 
 const [{ data: match }, { data: league }] = await Promise.all([
@@ -52,8 +59,14 @@ const [{ data: match }, { data: league }] = await Promise.all([
   }),
 ]);
 
-const lastFiveGamesForHomeTeam = getLastFiveGames(match.value?.homeTeamMatches, game.value?.homeTeam);
-const lastFiveGamesForAwayTeam = getLastFiveGames(match.value?.awayTeamMatches, game.value?.awayTeam);
+const lastFiveGamesForHomeTeam = getLastFiveGames(
+  match.value?.homeTeamMatches,
+  game.value?.homeTeam
+);
+const lastFiveGamesForAwayTeam = getLastFiveGames(
+  match.value?.awayTeamMatches,
+  game.value?.awayTeam
+);
 
 store.setLastFiveGames({
   home: lastFiveGamesForHomeTeam,
@@ -70,7 +83,7 @@ store.setMatchTeams({
   away: match.value?.awayTeam?.name,
 });
 
-const showDetails = () => isDetailsShown.value = true
+const showDetails = () => (isDetailsShown.value = true);
 
 function getAddress() {
   if (match.value) {
@@ -96,6 +109,28 @@ function isRemarkVisible() {
   }
   return false;
 }
+
+function slugify(str) {
+  return String(str)
+    .normalize("NFKD") // split accented characters into their base characters and diacritical marks
+    .replace(/[\u0300-\u036f]/g, "") // remove all the accents, which happen to be all in the \u03xx UNICODE block.
+    .trim() // trim leading or trailing whitespace
+    .toLowerCase() // convert to lowercase
+    .replace(/[^a-z0-9 -]/g, "") // remove non-alphanumeric characters
+    .replace(/\s+/g, "-") // replace spaces with hyphens
+    .replace(/-+/g, "-"); // remove consecutive hyphens
+}
+
+const { gtag } = useGtag();
+
+gtag(
+  slugify(`match_${route.query.homeTeam}-${route.query.awayTeam}`),
+  "visit",
+  {
+    app_name: "KVVV",
+    screen_name: "match",
+  }
+);
 </script>
 
 <style scoped>
@@ -108,26 +143,25 @@ function isRemarkVisible() {
 .match-lastfivegames-item {
   flex: 1;
 }
-.match-detail-button{
-  all:unset;
+.match-detail-button {
+  all: unset;
   border: 1px solid black;
   border-radius: 5px;
-  padding: 5px
-
+  padding: 5px;
 }
 
-.match-lastfivegamesdetails-container{
-  display: flex; 
+.match-lastfivegamesdetails-container {
+  display: flex;
   gap: 25px;
 }
 @media (max-width: 500px) {
-  .match-lastfivegamesdetails-container{
+  .match-lastfivegamesdetails-container {
     padding: 5px;
     gap: 5px;
   }
 }
 @media (max-width: 375px) {
-  .match-lastfivegamesdetails-container{
+  .match-lastfivegamesdetails-container {
     padding: 0px;
     gap: 0px;
   }

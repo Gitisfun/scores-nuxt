@@ -7,9 +7,22 @@
     </div>
     <div v-if="isFullScheduleShown">
       <div class="select-container">
-        <Select selectName="teams" selectId="teams" selectLabel="Filter op een team" :teams="leagueTeamsList" @selectNewTeam="filterSchedule" />
+        <Select
+          selectName="teams"
+          selectId="teams"
+          selectLabel="Filter op een team"
+          :teams="leagueTeamsList"
+          @selectNewTeam="filterSchedule"
+        />
         <div style="flex: 1">
-          <IconWithHover @iconClick="toggleSchedule" icon="bx:x" style="float: right" color="black" width="30" height="30" />
+          <IconWithHover
+            @iconClick="toggleSchedule"
+            icon="bx:x"
+            style="float: right"
+            color="black"
+            width="30"
+            height="30"
+          />
         </div>
       </div>
       <Schedule :schedule="rounds" ref="schedule" />
@@ -25,14 +38,13 @@ import { findClosestDateIndex } from "~~/logic/date";
 import { convertToDateList } from "~~/logic/date";
 import baseApiRoute from "~~/api/baseApiRoute";
 
-
-
 useHead({
   title: "KAVVV uitslagen",
   meta: [
     {
       name: "description",
-      content: "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de competitie uitslagen van jouw lokale team!",
+      content:
+        "Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van Vriendenclubs Vlaams-Brabant & Oost-Vlaanderen. Vind hier de competitie uitslagen van jouw lokale team!",
     },
   ],
   link: [{ rel: "canonical", href: "https://kavvv-uitslagen.be" }],
@@ -90,6 +102,13 @@ function filterSchedule(selectedTeam) {
 function toggleSchedule() {
   isFullScheduleShown.value = !isFullScheduleShown.value;
 }
+
+const { gtag } = useGtag();
+
+gtag(`${store?.province}_${route?.query?.league}`, "visit", {
+  app_name: "KVVV",
+  screen_name: "league",
+});
 </script>
 
 <style scoped>
