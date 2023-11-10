@@ -78,6 +78,13 @@ useHead({
     },
   ],
 });
+
+const { gtag } = useGtag();
+// SSR-ready
+gtag("home_page", "visit", {
+  app_name: "KVVV",
+  screen_name: "Home",
+});
 </script>
 
 <style>
