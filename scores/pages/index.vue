@@ -81,7 +81,7 @@ useHead({
 
 const { gtag } = useGtag();
 gtag("home_page", "visit", {
-  app_name: "KVVV",
+  app_name: "KAVVV",
   screen_name: "Home",
 });
 </script>

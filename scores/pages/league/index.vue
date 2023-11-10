@@ -106,7 +106,7 @@ function toggleSchedule() {
 const { gtag } = useGtag();
 
 gtag(`${store?.province}_${route?.query?.league}`, "visit", {
-  app_name: "KVVV",
+  app_name: "KAVVV",
   screen_name: "league",
 });
 </script>

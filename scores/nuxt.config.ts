@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   gtag: {
     id: "G-NTLK8VMS5V",
     config: {
-      page_title: 'KVVV Uitslagen'
+      page_title: 'KAVVV Uitslagen'
     }
   },
   sitemap: {

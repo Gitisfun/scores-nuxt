@@ -127,7 +127,7 @@ gtag(
   slugify(`match_${route.query.homeTeam}-${route.query.awayTeam}`),
   "visit",
   {
-    app_name: "KVVV",
+    app_name: "KAVVV",
     screen_name: "match",
   }
 );

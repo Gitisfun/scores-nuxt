@@ -93,7 +93,7 @@ store.setRanking(data?.value?.ranking?.ranking);
 const { gtag } = useGtag();
 
 gtag(route?.params?.slug, "visit", {
-  app_name: "KVVV",
+  app_name: "KAVVV",
   screen_name: "club",
 });
 </script>

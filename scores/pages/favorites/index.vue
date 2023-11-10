@@ -35,7 +35,7 @@ const { data: teams } = await useFetch(`${ROUTE_NAME}/clubs`, {
 const { gtag } = useGtag();
 
 gtag("favorites", "visit", {
-  app_name: "KVVV",
+  app_name: "KAVVV",
   screen_name: "favorites",
 });
 </script>

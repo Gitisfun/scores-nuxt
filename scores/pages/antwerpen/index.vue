@@ -90,7 +90,7 @@ store.setScheduleIndex(index);
 const { gtag } = useGtag();
 
 gtag("antwerpen", "visit", {
-  app_name: "KVVV",
+  app_name: "KAVVV",
   screen_name: "antwerpen",
 });
 </script>

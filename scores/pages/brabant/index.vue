@@ -89,7 +89,7 @@ store.setScheduleIndex(index);
 const { gtag } = useGtag();
 
 gtag("brabant", "visit", {
-  app_name: "KVVV",
+  app_name: "KAVVV",
   screen_name: "brabant",
 });
 </script>
