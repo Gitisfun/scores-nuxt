@@ -13,6 +13,9 @@ export default defineNuxtConfig({
       page_title: 'KAVVV Uitslagen'
     }
   },
+  googleAdsense: {
+    id: 'ca-pub-9928832567373030'
+  },
   sitemap: {
     hostname: "https://kavvv-uitslagen.be",
     urls: async () => [
@@ -452,8 +455,5 @@ export default defineNuxtConfig({
         priority: 0.8,
       },
     ],
-  },
-  "google-adsense": {
-    id: "ca-pub-9928832567373030",
   },
 });
