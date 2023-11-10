@@ -36,19 +36,15 @@ const { game, round } = defineProps({
 });
 
 const gameTime = computed(() => {
-  if (game.score === "UITGESTELD") {
-    return "PP";
-  }
-  return getGameTime(game.date, game.time);
+  if (game.score === "UITGESTELD") return "Uitg.";
+  if (!game.score.includes("Word")) return getGameTime(game.date, game.time);
+  else return getGameTime(game.date, game.time);
 });
 
 const gameTimeColor = computed(() => {
-  if (game.score === "UITGESTELD") {
-    return "orange";
-  }
-  if (gameTime === "" || gameTime === "HT") {
-    return "#ff6b00";
-  }
+  if (game.score === "UITGESTELD") return "red";
+  if (game.score.includes("Word")) return "orange";
+  if (gameTime === "" || gameTime === "HT") return "#ff6b00";
   return "grey";
 });
 
