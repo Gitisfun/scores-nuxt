@@ -1,20 +1,22 @@
 <template>
-  <Header v-if="isVisible" title="KAVVV Uitslagen" />
-  <div class="home-box">
-    <div v-if="isVisible">
-      <h2 class="home-info-box">
-        Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van
-        Vriendenclubs Antwerpen, Vlaams-Brabant & Oost-Vlaanderen. Vind hier de
-        uitslagen van jouw lokale club!
-      </h2>
-      <h4>Kies een provincie</h4>
-      <NavigationItem title="Antwerpen" :route="ANTWERPEN_ROUTE" />
-      <NavigationItem
-        title="Vlaams-Brabant & Oost-Vlaanderen"
-        :route="BRABANT_ROUTE"
-      />
+  <div>
+    <Header v-if="isVisible" title="KAVVV Uitslagen" />
+    <div class="home-box">
+      <div v-if="isVisible">
+        <h2 class="home-info-box">
+          Alle voetbal uitslagen van de Koninklijke Algemene Vereniging van
+          Vriendenclubs Antwerpen, Vlaams-Brabant & Oost-Vlaanderen. Vind hier
+          de uitslagen van jouw lokale club!
+        </h2>
+        <h4>Kies een provincie</h4>
+        <NavigationItem title="Antwerpen" :route="ANTWERPEN_ROUTE" />
+        <NavigationItem
+          title="Vlaams-Brabant & Oost-Vlaanderen"
+          :route="BRABANT_ROUTE"
+        />
+      </div>
+      <SearchClub v-if="isEnabled" :setSearching="setSearching" />
     </div>
-    <SearchClub v-if="isEnabled" :setSearching="setSearching" />
   </div>
 </template>
 

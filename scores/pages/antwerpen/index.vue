@@ -86,8 +86,4 @@ store.setDates(list);
 
 const index = findClosestDateIndex(list);
 store.setScheduleIndex(index);
-
-onMounted(async () => {
-  await useFetch(`${ROUTE_NAME}/statistics/increment`);
-});
 </script>

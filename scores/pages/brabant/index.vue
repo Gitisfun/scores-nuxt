@@ -23,7 +23,6 @@ import { storeDatesInCache } from "~~/logic/cache";
 import baseApiRoute from "~~/api/baseApiRoute";
 import { BRABANT } from "~~/logic/constants/provinces";
 
-console.log("A");
 useHead({
   title: "KAVVV Vlaams-Brabant & Oost-Vlaanderen",
   meta: [
@@ -86,8 +85,4 @@ store.setDates(list);
 
 const index = findClosestDateIndex(list);
 store.setScheduleIndex(index);
-
-onMounted(async () => {
-  await useFetch(`${ROUTE_NAME}/statistics/increment`);
-});
 </script>
