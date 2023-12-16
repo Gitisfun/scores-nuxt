@@ -36,7 +36,6 @@ const { game, round } = defineProps({
 });
 
 const gameTime = computed(() => {
-  console.log(game);
   if (game.status === "UITGESTELD") return "Uitg.";
   if (!game.status?.includes("Word")) return getGameTime(game.date, game.time);
   else return getGameTime(game.date, game.time);

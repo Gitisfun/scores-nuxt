@@ -28,7 +28,6 @@ export default {
   computed: {
     formattedScoreOrTime() {
       if (this.game?.score === "UITGESTELD") return "Uitg.";
-      if (this.game?.score?.includes("Word")) return "Bezig";
       if (this.game.homeScore && this.game.awayScore) {
         return `${this.game.homeScore} - ${this.game.awayScore}`;
       }
