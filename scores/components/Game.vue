@@ -37,12 +37,14 @@ const { game, round } = defineProps({
 
 const gameTime = computed(() => {
   if (game.status === "UITGESTELD") return "Uitg.";
+  if (game.status?.includes("Wachten op uit")) return "FT";
   if (!game.status?.includes("Word")) return getGameTime(game.date, game.time);
   else return getGameTime(game.date, game.time);
 });
 
 const gameTimeColor = computed(() => {
   if (game.status === "UITGESTELD") return "red";
+  if (game.status?.includes("Wachten op uit")) return "skyblue";
   if (game.status?.includes("Word")) return "orange";
   if (gameTime === "" || gameTime === "HT") return "#ff6b00";
   return "grey";
