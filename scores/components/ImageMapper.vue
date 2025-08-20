@@ -36,8 +36,9 @@
   <img v-else-if="team === `RC Lamme Guiche`" src="../assets/rclammeguichea.png" alt="RC Lamme Guiche" title="RC Lamme Guiche" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `VK Klein Leeuw`" src="../assets/vkkleinleeuwa.png" alt="VK Klein Leeuw" title="VK Klein Leeuw" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `Nissan Essenbeek A` || team === `Nissan Essenbeek B`" src="../assets/fcnissanessenbeek.png" alt="Nissan Essenbeek" title="Nissan Essenbeek" width="25" height="25" loading="lazy" />
-  <img v-else-if="team === `Kv SKO Vollezele A` || team === `Kv SKO Vollezele B`" src="../assets/kvskovollezele.jpg" alt="Kv SKO Vollezele" title="Kv SKO Vollezele" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `Vollezele` || team === `Kv SKO Vollezele A` || team === `Kv SKO Vollezele B`" src="../assets/kvskovollezele.jpg" alt="Kv SKO Vollezele" title="Kv SKO Vollezele" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `FC Safira`" src="../assets/fcsafiraa.png" alt="FC Safira" title="FC Safira" width="25" height="25" loading="lazy" />
+  <img v-else-if="team === `VK Bouwvrienden`" src="../assets/vk_bouwvrienden.png" alt="VK Bouwvrienden" title="VK Bouwvrienden" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `Davidskornuiten`" src="../assets/davidskornuiten.png" alt="Davidskornuiten" title="Davidskornuiten" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `FC Nederboelare`" src="../assets/fcnederboelare.png" alt="FC Nederboelare" title="FC Nederboelare" width="25" height="25" loading="lazy" />
   <img v-else-if="team === `VK Buizingen`" src="../assets/vkbuizingen.jpg" alt="VK Buizingen" title="VK Buizingen" width="25" height="25" loading="lazy" />
